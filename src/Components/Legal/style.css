@@ -1,0 +1,15 @@
+.legal h1 {
+    margin: 3rem auto 0;
+    height: 4rem;
+    line-height: 4rem;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: overline underline;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+.legal p {
+    margin: 2rem auto;
+    width: 80%;
+    text-align: justify;
+}

@@ -1,0 +1,58 @@
+/* CONTAINER ***************************************************************/
+
+.Newsletter-container {
+    width: calc(100% - 2rem);
+    margin: 2rem auto;
+    display: flex;
+    position: relative;
+    background-image: url("../img/Newsletter.png");
+    height: 17.5rem;
+    background-size: cover;
+    background-position: center;
+    border-radius: 1rem;
+    color: white;
+}
+
+/* CONTAINER PART 1 ********************************************************/
+
+.Newsletter-part1 {
+    width: 45rem;
+    height: 20rem;
+    margin: auto;
+    margin-right: 1rem;
+}
+
+.Newsletter-part1 .Newsletter-title {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.Newsletter-part1 .Newsletter-text {
+    text-align: center;
+}
+
+/* CONTAINER PART 2 ********************************************************/
+
+.Newsletter-part2 {
+    width: 45rem;
+    height: 20rem;
+    margin: auto;
+    margin-left: 1rem;
+}
+
+.Newsletter-part2 .Newsletter-title {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.Newsletter-part2 .Newsletter-form {
+    text-align: center;
+}
+
+.Newsletter-part2 .Newsletter-email {
+    width: 30rem;
+}
+
+.Newsletter-part2 .Newsletter-button {
+    width: 5rem;
+}
