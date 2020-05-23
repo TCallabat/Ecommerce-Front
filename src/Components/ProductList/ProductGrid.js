@@ -5,10 +5,7 @@
 /* Import */
 import React, { Component } from 'react';
 import ProductItems from "./ProductItems";
-import { Container, Row, Col, Button } from 'react-bootstrap';
 
-/* Style */
-import "./ProductGrid.css";
 
 /* Component */
 class ProductGrid extends Component {
@@ -19,15 +16,18 @@ class ProductGrid extends Component {
         };
     }
 
+
     componentDidMount() {
         this.fetchData()
     }
+
 
     componentDidUpdate(prevProps) {
         if (this.props.match.params !== prevProps.match.params) {
             this.fetchData()
         }
     }
+
 
     fetchData = () => {
         let { family } = this.props.match.params;
@@ -43,6 +43,7 @@ class ProductGrid extends Component {
                 (error) => console.log(error));
     }
 
+
     sortPriceAscending = () => {
         let sort = [...this.state.data].sort(function (a, b) {
             if (a.price < b.price) return -1;
@@ -51,6 +52,7 @@ class ProductGrid extends Component {
         });
         this.setState({ data: sort })
     }
+
 
     sortPriceDescending = () => {
         let sort = [...this.state.data].sort(function (a, b) {
@@ -61,6 +63,7 @@ class ProductGrid extends Component {
         this.setState({ data: sort })
     }
 
+
     sortBrandAscending = () => {
         let sort = [...this.state.data].sort(function (a, b) {
             if (a.brand < b.brand) return -1;
@@ -69,6 +72,7 @@ class ProductGrid extends Component {
         });
         this.setState({ data: sort })
     }
+
 
     sortBrandDescending = () => {
         let sort = [...this.state.data].sort(function (a, b) {
@@ -79,6 +83,7 @@ class ProductGrid extends Component {
         this.setState({ data: sort })
     }
 
+
     sortRateAscending = () => {
         let sort = [...this.state.data].sort(function (a, b) {
             if (a.rate < b.rate) return -1;
@@ -87,6 +92,7 @@ class ProductGrid extends Component {
         });
         this.setState({ data: sort })
     }
+
 
     sortRateDescending = () => {
         let sort = [...this.state.data].sort(function (a, b) {
@@ -97,11 +103,19 @@ class ProductGrid extends Component {
         this.setState({ data: sort })
     }
 
-    displayTitle = () => {
-        const { family } = this.props.match.params;
-        if (family === "computer") { return <h1 className="product_grid_title">ordinateurs</h1> }
-        if (family === "phone") { return <h1 className="product_grid_title">telephones</h1> }
+
+    displayTitle = (e) => {
+        const { family } = e;
+        switch (family) {
+            case "computer":
+                return "ordinateurs";
+            case "phone":
+                return "téléphones";
+            default:
+                return
+        }
     }
+
 
     displayProducts = () => {
         let products = this.state.data.map((element, index) => {
@@ -125,30 +139,25 @@ class ProductGrid extends Component {
         return products;
     };
 
+
     render() {
         return (
-            <Container fluid className="product_grid_container">
-                <Row>
-                    <Col>
-                        {this.displayTitle()}
-                    </Col>
-                </Row>
-                <Row>
-                    <Col className="text-center">
-                        <Button className="product_grid_button" variant="dark" onClick={this.sortPriceAscending}>prix -/+</Button>
-                        <Button className="product_grid_button" variant="dark" onClick={this.sortPriceDescending}>prix +/-</Button>
-                        <Button className="product_grid_button" variant="dark" onClick={this.sortBrandAscending}>marque a/z</Button>
-                        <Button className="product_grid_button" variant="dark" onClick={this.sortBrandDescending}>marque z-a</Button>
-                        <Button className="product_grid_button" variant="dark" onClick={this.sortRateAscending}>note -/+</Button>
-                        <Button className="product_grid_button" variant="dark" onClick={this.sortRateDescending}>note +/-</Button>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col className="product_grid_content">
-                        {this.displayProducts()}
-                    </Col>
-                </Row>
-            </Container>
+            <div fluid className="mt-4">
+                <div className="text-center text-uppercase" style={{ "text-shadow": "1.5px 1.5px rgba(0, 0, 0, 0.25)" }}>
+                    <h1><u>{this.displayTitle(this.props.match.params)}</u> </h1>
+                </div>
+                <div className="text-center mt-3 mb-2">
+                    <button className="btn btn-light my-2 mx-3 py-1 px-0 btn-filter" onClick={this.sortPriceAscending}>prix -/+</button>
+                    <button className="btn btn-light my-2 mx-3 py-1 px-0 btn-filter" onClick={this.sortPriceDescending}>prix +/-</button>
+                    <button className="btn btn-light my-2 mx-3 py-1 px-0 btn-filter" onClick={this.sortBrandAscending}>marque a/z</button>
+                    <button className="btn btn-light my-2 mx-3 py-1 px-0 btn-filter" onClick={this.sortBrandDescending}>marque z-a</button>
+                    <button className="btn btn-light my-2 mx-3 py-1 px-0 btn-filter" onClick={this.sortRateAscending}>note -/+</button>
+                    <button className="btn btn-light my-2 mx-3 py-1 px-0 btn-filter" onClick={this.sortRateDescending}>note +/-</button>
+                </div>
+                <div className="d-flex flex-wrap">
+                    {this.displayProducts()}
+                </div>
+            </div>
         );
     }
 }

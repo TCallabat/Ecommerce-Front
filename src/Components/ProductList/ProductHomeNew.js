@@ -7,8 +7,6 @@ import React, { Component } from 'react';
 import ProductItems from "../ProductList/ProductItems";
 import { Container, Row, Col } from 'react-bootstrap';
 
-/* Style */
-import "../ProductList/ProductGrid.css";
 
 /* Component */
 class ProductHomeNew extends Component {
@@ -19,9 +17,11 @@ class ProductHomeNew extends Component {
         };
     }
 
+
     componentDidMount() {
         this.fetchData()
     }
+
 
     fetchData = () => {
         fetch(`http://localhost:8080/`, {
@@ -35,11 +35,12 @@ class ProductHomeNew extends Component {
                 (error) => console.log(error));
     }
 
-    displayTitle = (element) => {
-        const filter = element;
-        if (filter === "new") { return <h1 className="product_grid_title">Nouveaux produits</h1> }
-        if (filter === "top") { return <h1 className="product_grid_title">Top des ventes</h1> }
+
+    displayTitle = (e) => {
+        if (e === "new") { return "nouveaux produits" }
+        if (e === "top") { return "top des ventes" }
     }
+
 
     displayProducts = () => {
         let products = this.state.data
@@ -65,20 +66,17 @@ class ProductHomeNew extends Component {
         return products;
     };
 
+    
     render() {
         return (
-            <Container fluid className="product_grid_container">
-                <Row>
-                    <Col>
-                        {this.displayTitle(this.props.filter)}
-                    </Col>
-                </Row>
-                <Row>
-                    <Col className="product_grid_content">
-                        {this.displayProducts()}
-                    </Col>
-                </Row>
-            </Container>
+            <div fluid className="mt-4">
+                <div className="text-center text-uppercase" style={{ "text-shadow": "1.5px 1.5px rgba(0, 0, 0, 0.25)" }}>
+                    <h1><u>{this.displayTitle(this.props.filter)}</u> </h1>
+                </div>
+                <div className="d-flex flex-wrap">
+                    {this.displayProducts()}
+                </div>
+            </div>
         );
     }
 }

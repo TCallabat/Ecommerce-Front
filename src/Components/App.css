@@ -7,3 +7,40 @@
 body {
   background-color: #ededed !important;
 }
+
+.btn-small {
+  border-radius: 1rem !important;
+  background-color: black !important;
+  color:white !important;
+  border: none !important;
+  font-weight: 600 !important;
+  font-size: .9rem !important;
+  width: 8rem !important;
+  height: 2rem !important;
+}
+
+.btn-filter {
+  border-radius: 1rem !important;
+  background-color: black !important;
+  color:white !important;
+  border: none !important;
+  font-weight: 600 !important;
+  font-size: .9rem !important;
+  width: 10rem !important;
+  height: 2rem !important;
+}
+
+.btn-quantity{
+  border-radius: 2rem !important;
+  background-color: black !important;
+  color:white !important;
+  border: none !important;
+  font-size: 2rem !important;
+  width: 2rem !important;
+  height: 2rem !important;
+  line-height: 2rem !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
